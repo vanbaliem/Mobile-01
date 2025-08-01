@@ -77,4 +77,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="244dp"
+        android:layout_height="87dp"
+        android:text="Button"
+        tools:layout_editor_absoluteX="91dp"
+        tools:layout_editor_absoluteY="506dp"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
