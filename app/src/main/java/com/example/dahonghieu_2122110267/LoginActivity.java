@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,8 +30,23 @@ public class LoginActivity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(it);
+                EditText objEmail = findViewById(R.id.txtEmail);
+                String txtEmail = objEmail.getText().toString();
+
+                EditText objPass = findViewById(R.id.txtPass);
+                String txtPass = objPass.getText().toString();
+
+                CharSequence text = txtEmail + " " + txtPass;
+                int duration = Toast.LENGTH_LONG;
+                if (txtEmail.equals("hieu") && txtPass.equals("123"))
+                {
+                    Intent it = new Intent(getApplicationContext(),MainActivity.class);
+                    startActivity(it);
+                }
+                else {
+                    Toast toast = Toast.makeText(getApplicationContext(),"Login fail",duration);
+                    toast.show();
+                }
             }
         });
         Button btnReister = findViewById(R.id.btnRegister);
