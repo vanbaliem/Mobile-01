@@ -13,19 +13,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HITCApp"
         tools:targetApi="31">
-
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
         <!-- Đây là activity sẽ chạy đầu tiên -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Những activity khác không cần intent-filter -->
-        <activity android:name=".MainActivity" android:exported="true" />
-
+        </activity> <!-- Những activity khác không cần intent-filter -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
     </application>
+
 </manifest>
