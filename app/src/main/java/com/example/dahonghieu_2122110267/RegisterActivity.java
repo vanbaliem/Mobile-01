@@ -23,12 +23,22 @@ public class RegisterActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        Button btnRegisterAccount = findViewById(R.id.btnRegisterAccount);
-        btnRegisterAccount.setOnClickListener(new View.OnClickListener() {
+//        Button btnRegisterAccount = findViewById(R.id.btnRegisterAccount);
+//        btnRegisterAccount.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent it = new Intent(getApplicationContext(),LoginActivity.class);
+//                startActivity(it);
+//            }
+//        });
+        Button btnBackToLogin = findViewById(R.id.btnBackToLogin);
+        btnBackToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(getApplicationContext(),LoginActivity.class);
-                startActivity(it);
+                // Quay lại LoginActivity
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish(); // Tùy chọn: kết thúc RegisterActivity để không quay lại nữa khi ấn back
             }
         });
     }

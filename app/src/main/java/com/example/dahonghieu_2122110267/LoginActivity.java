@@ -41,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
                 if (txtEmail.equals("hieu") && txtPass.equals("123"))
                 {
                     Intent it = new Intent(getApplicationContext(),MainActivity.class);
+                    it.putExtra("email", txtEmail); // For String
+                    it.putExtra("pass", txtPass); // For Integer
                     startActivity(it);
                 }
                 else {
@@ -54,6 +56,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(getApplicationContext(),RegisterActivity.class);
+
+
                 startActivity(it);
             }
         });
