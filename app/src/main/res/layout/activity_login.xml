@@ -9,13 +9,13 @@
     android:background="#F2F2F2"
     tools:context=".LoginActivity">
 
-    <!-- Ổ khóa -->
+    <!-- Logo thay thế ổ khóa -->
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewLogo"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@android:drawable/ic_lock_lock"
-        android:contentDescription="Lock Icon"
+        android:src="@drawable/logo"
+        android:contentDescription="App Logo"
         android:layout_marginTop="60dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
         android:inputType="textEmailAddress"
         android:backgroundTint="#000000"
         android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintTop_toBottomOf="@id/imageViewLogo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent="0.8" />
@@ -93,5 +93,4 @@
         app:layout_constraintTop_toBottomOf="@id/btnLogin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
