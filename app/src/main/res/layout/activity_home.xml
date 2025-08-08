@@ -1,23 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/main"
     android:padding="16dp"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    tools:context=".HomeActivity">
 
-    <!-- Thanh tìm kiếm -->
-    <EditText
-        android:id="@+id/edtSearch"
+
+    <!-- Logo + Thanh tìm kiếm -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:hint="Tìm kiếm sản phẩm"
-        android:padding="12dp"
-        android:background="@drawable/edit_text_background"
-        android:drawableLeft="@android:drawable/ic_menu_search"
-        android:textColor="#000000"
-        android:textColorHint="#888888"/>
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/edit_text_background">
+
+        <!-- Logo -->
+        <ImageView
+            android:id="@+id/imageViewLogo"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/logo"
+            android:contentDescription="App Logo"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" />
+
+        <!-- Ô tìm kiếm -->
+        <EditText
+            android:id="@+id/edtSearch"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="Tìm kiếm sản phẩm"
+            android:background="@android:color/transparent"
+            android:textColor="#000000"
+            android:textColorHint="#888888"
+            android:padding="0dp"/>
+    </LinearLayout>
+
+    <!-- Banner -->
+    <ImageView
+        android:id="@+id/imgBanner"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/banner"
+        android:contentDescription="Banner quảng cáo"
+        android:layout_marginTop="8dp" />
 
     <!-- Danh sách danh mục -->
     <TextView
@@ -34,7 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_marginTop="8dp"
-        android:orientation="horizontal"/>
+        android:orientation="horizontal" />
 
     <!-- Danh sách sản phẩm -->
     <TextView
@@ -50,6 +83,7 @@
         android:id="@+id/recyclerProduct"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_weight="1" />
+
 </LinearLayout>

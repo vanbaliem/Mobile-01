@@ -9,7 +9,7 @@
     android:background="#F2F2F2"
     tools:context=".LoginActivity">
 
-    <!-- Logo thay thế ổ khóa -->
+
     <ImageView
         android:id="@+id/imageViewLogo"
         android:layout_width="120dp"
