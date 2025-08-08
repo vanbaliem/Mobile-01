@@ -1,72 +1,106 @@
-package com.example.hitcapp;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+    package com.example.hitcapp;
+    import android.content.Intent;
+    import android.os.Bundle;
+    import android.util.Log;
+    import android.view.View;
+    import android.widget.Button;
+    import android.widget.EditText;
+    import android.widget.Toast;
+    import androidx.activity.EdgeToEdge;
+    import androidx.appcompat.app.AppCompatActivity;
+    import androidx.core.graphics.Insets;
+    import androidx.core.view.ViewCompat;
+    import androidx.core.view.WindowInsetsCompat;
+    import com.android.volley.Request;
+    import com.android.volley.RequestQueue;
+    import com.android.volley.toolbox.JsonArrayRequest;
+    import com.android.volley.toolbox.Volley;
+    import org.json.JSONArray;
+    import org.json.JSONException;
+    import org.json.JSONObject;
 
-public class LoginActivity extends AppCompatActivity {
+    public class LoginActivity extends AppCompatActivity {
+        private static final String TAG = "LoginActivity";
+        private RequestQueue requestQueue;
+        private EditText edtEmail, edtPassword;
+        private Button btnLogin, btnRegister;
+        private String apiUrl = "https://68940ecabe3700414e11e179.mockapi.io/uses";
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_login);
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            EdgeToEdge.enable(this);
+            setContentView(R.layout.activity_login);
 
-        // Xử lý để giao diện không bị tràn vào các vùng hệ thống như thanh trạng thái
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+            ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+                Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+                return insets;
+            });
 
-        // Ánh xạ nút Login từ layout
-        Button btnNext = findViewById(R.id.btnLogin); // <-- Chắc chắn id trong layout là btnLogin
+            edtEmail = findViewById(R.id.txtEmail);
+            edtPassword = findViewById(R.id.txtPass);
+            btnLogin = findViewById(R.id.btnLogin);
+            btnRegister = findViewById(R.id.btnRegister);
+            requestQueue = Volley.newRequestQueue(this);
 
-        // Thiết lập sự kiện khi click vào nút Login
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Lấy dữ liệu từ EditText Email
-                EditText objEmail = findViewById(R.id.txtEmail); // <-- Chắc chắn id là txtEmail
-                String txtEmail = objEmail.getText().toString();
+            btnLogin.setOnClickListener(v -> {
+                String email = edtEmail.getText().toString().trim();
+                String password = edtPassword.getText().toString().trim();
 
-                // Lấy dữ liệu từ EditText Password
-                EditText objPass = findViewById(R.id.txtPass); // <-- Chắc chắn id là txtPass
-                String txtPass = objPass.getText().toString();
-
-                // Kiểm tra điều kiện đăng nhập
-                if (txtEmail.equals("liem") && txtPass.equals("123")) {
-                    // Tạo Intent để chuyển sang MainActivity
-                    Intent it = new Intent(LoginActivity.this, MainActivity.class);
-
-                    // Đính kèm dữ liệu email và mật khẩu vào Intent
-                    it.putExtra("email", txtEmail);
-                    it.putExtra("pass", txtPass);
-
-                    // Khởi động MainActivity
-                    startActivity(it);
+                if (email.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(LoginActivity.this, "Vui lòng nhập email và mật khẩu", Toast.LENGTH_SHORT).show();
                 } else {
-                    // Hiển thị thông báo khi đăng nhập thất bại
-                    Toast.makeText(LoginActivity.this, "Login fail", Toast.LENGTH_LONG).show();
+                    loginUser(email, password);
                 }
-            }
-        });
-        Button btnRegister = findViewById(R.id.btnRegister);
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it = new Intent(getApplicationContext(),RegisterActivity.class);
+            });
 
-
+            btnRegister.setOnClickListener(v -> {
+                Intent it = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(it);
-            }
-        });
+            });
+        }
+
+        private void loginUser(String email, String password) {
+            String loginUrlWithParams = apiUrl + "?email=" + email;
+
+            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, loginUrlWithParams, null,
+                    response -> {
+                        try {
+                            if (response.length() > 0) {
+                                JSONObject user = response.getJSONObject(0);
+                                String storedPassword = user.getString("password");
+
+                                if (password.equals(storedPassword)) {
+                                    String emailResponse = user.getString("email");
+                                    Toast.makeText(LoginActivity.this, "Đăng nhập thành công!", Toast.LENGTH_LONG).show();
+                                    Log.d(TAG, "Đăng nhập thành công, email: " + emailResponse);
+                                    Intent it = new Intent(LoginActivity.this, MainActivity.class);
+                                    it.putExtra("email", emailResponse);
+                                    startActivity(it);
+                                    finish();
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "Đăng nhập thất bại: Mật khẩu không đúng.", Toast.LENGTH_LONG).show();
+                                }
+
+                            } else {
+                                Toast.makeText(LoginActivity.this, "Đăng nhập thất bại: Email không tồn tại.", Toast.LENGTH_LONG).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(LoginActivity.this, "Lỗi phân tích dữ liệu phản hồi", Toast.LENGTH_LONG).show();
+                        }
+                    },
+                    error -> {
+                        String errorMessage = "Đăng nhập thất bại: Lỗi mạng hoặc server.";
+                        if (error.networkResponse != null) {
+                            errorMessage += " Status Code: " + error.networkResponse.statusCode;
+                        }
+                        Toast.makeText(LoginActivity.this, errorMessage, Toast.LENGTH_LONG).show();
+                        Log.e(TAG, "Lỗi đăng nhập: " + errorMessage);
+                    });
+
+
+            requestQueue.add(jsonArrayRequest);
+        }
     }
-}
