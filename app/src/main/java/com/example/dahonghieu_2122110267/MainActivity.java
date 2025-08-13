@@ -41,11 +41,13 @@ package com.example.dahonghieu_2122110267;
 
 import static android.content.ContentValues.TAG;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -67,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
     private StringRequest mStringRequest;
     private String url = "https://68931182c49d24bce86949c7.mockapi.io/users";
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
             return insets;
 
         });
+
+
 
         // Nhận dữ liệu từ LoginActivity
         Intent intent = getIntent();
@@ -126,5 +131,6 @@ public class MainActivity extends AppCompatActivity {
         mRequestQueue.add(mStringRequest);
     }
 }
+
 
 

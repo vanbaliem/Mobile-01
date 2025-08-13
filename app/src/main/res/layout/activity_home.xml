@@ -1,89 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/main"
-    android:padding="16dp"
-    android:background="#FFFFFF"
     tools:context=".HomeActivity">
 
-
-    <!-- Logo + Thanh tìm kiếm -->
-    <LinearLayout
+    <!-- AppBar / Toolbar -->
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:background="@drawable/edit_text_background">
+        android:layout_height="wrap_content">
 
-        <!-- Logo -->
-        <ImageView
-            android:id="@+id/imageViewLogo"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:src="@drawable/logo"
-            android:contentDescription="App Logo"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp" />
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title=""
+            app:contentInsetStartWithNavigation="0"
+            app:navigationIcon="@drawable/ic_menu">
 
-        <!-- Ô tìm kiếm -->
-        <EditText
-            android:id="@+id/edtSearch"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:hint="Tìm kiếm sản phẩm"
-            android:background="@android:color/transparent"
-            android:textColor="#000000"
-            android:textColorHint="#888888"
-            android:padding="0dp"/>
-    </LinearLayout>
+            <!-- Ô tìm kiếm + nút filter đặt trong toolbar -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="12dp">
 
-    <!-- Banner -->
-    <ImageView
-        android:id="@+id/imgBanner"
+                <EditText
+                    android:id="@+id/edtSearch"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="Tìm kiếm…"
+                    android:paddingStart="40dp"
+                    android:background="@drawable/bg_search"
+                    android:singleLine="true"
+                    android:imeOptions="actionSearch"
+                    android:drawablePadding="8dp"
+                    android:textColor="#222"
+                    android:textColorHint="#999"
+                    android:drawableStart="@drawable/ic_search_24"/>
+
+                <ImageButton
+                    android:id="@+id/btnFilter"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:backgroundTint="@android:color/transparent"
+                    android:background="@drawable/bg_icon_btn"
+                    android:src="@drawable/ic_tune_24"
+                    android:contentDescription="@string/app_name"/>
+            </LinearLayout>
+        </com.google.android.material.appbar.MaterialToolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Nội dung cuộn -->
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/banner"
-        android:contentDescription="Banner quảng cáo"
-        android:layout_marginTop="8dp" />
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <!-- Danh sách danh mục -->
-    <TextView
-        android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Banner -->
+            <ImageView
+                android:id="@+id/imgBanner"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/sample_banner"/>
+
+            <!-- Tiêu đề danh mục -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Danh mục 1"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:padding="12dp"
+                android:textColor="#333"/>
+
+            <!-- Danh mục ngang -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCategory"
+                android:layout_width="match_parent"
+                android:layout_height="86dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="4dp"
+                android:clipToPadding="false"
+                tools:listitem="@layout/item_category"/>
+
+            <!-- Lưới sản phẩm -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:nestedScrollingEnabled="false"
+                tools:listitem="@layout/item_product"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Danh mục"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:layout_marginTop="16dp"
-        android:textColor="#333333"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerCategory"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal" />
-
-    <!-- Danh sách sản phẩm -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sản phẩm nổi bật"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:layout_marginTop="16dp"
-        android:textColor="#333333"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerProduct"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1" />
-
-</LinearLayout>
+        android:layout_gravity="bottom"
+        app:menu="@menu/menu_bottom"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

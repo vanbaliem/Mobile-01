@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingEnd="8dp">
+
+    <ImageView
+        android:id="@+id/imgCat"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/banner1"
+        android:padding="4dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/banner2"/>
+
+    <TextView
+        android:id="@+id/tvCat"
+        android:layout_width="72dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:gravity="center"
+        android:layout_marginTop="6dp"
+        android:text="Danh mục"
+        android:textSize="12sp"/>
+</LinearLayout>
