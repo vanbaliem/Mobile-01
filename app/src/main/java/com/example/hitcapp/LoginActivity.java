@@ -75,7 +75,7 @@
                                     String emailResponse = user.getString("email");
                                     Toast.makeText(LoginActivity.this, "Đăng nhập thành công!", Toast.LENGTH_LONG).show();
                                     Log.d(TAG, "Đăng nhập thành công, email: " + emailResponse);
-                                    Intent it = new Intent(LoginActivity.this, MainActivity.class);
+                                    Intent it = new Intent(LoginActivity.this, HomeActivity.class);
                                     it.putExtra("email", emailResponse);
                                     startActivity(it);
                                     finish();
