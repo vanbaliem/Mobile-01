@@ -3,26 +3,20 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
-    android:paddingEnd="8dp">
+    android:padding="6dp">
 
     <ImageView
         android:id="@+id/imgCat"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@drawable/banner1"
-        android:padding="4dp"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/banner2"/>
+        android:src="@drawable/cat_coffee"/>
 
     <TextView
-        android:id="@+id/tvCat"
-        android:layout_width="72dp"
+        android:id="@+id/txtCatName"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:gravity="center"
-        android:layout_marginTop="6dp"
         android:text="Danh mục"
-        android:textSize="12sp"/>
+        android:textSize="12sp"
+        android:layout_marginTop="4dp"/>
 </LinearLayout>

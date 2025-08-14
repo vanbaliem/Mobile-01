@@ -1,99 +1,61 @@
 package com.example.dahonghieu_2122110267;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class CustomAdapter implements ListAdapter {
-    ArrayList<SubjectData> arrayList;
-    Context context;
+public class CustomAdapter extends BaseAdapter {
+    private final Context context;
+    private final List<SubjectData> data;
+    private final LayoutInflater inflater;
 
-    public CustomAdapter(Context context, ArrayList<SubjectData> arrayList) {
-        this.arrayList = arrayList;
+    public CustomAdapter(Context context, List<SubjectData> data) {
         this.context = context;
+        this.data = data;
+        this.inflater = LayoutInflater.from(context);
     }
 
-    @Override
-    public boolean areAllItemsEnabled() {
-        return true;
-    }
+    @Override public int getCount() { return data.size(); }
+    @Override public Object getItem(int position) { return data.get(position); }
+    @Override public long getItemId(int position) { return position; }
 
-    @Override
-    public boolean isEnabled(int position) {
-        return true;
-    }
-
-    @Override
-    public void registerDataSetObserver(android.database.DataSetObserver observer) { }
-
-    @Override
-    public void unregisterDataSetObserver(android.database.DataSetObserver observer) { }
-
-    @Override
-    public int getCount() {
-        return arrayList.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return arrayList.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public boolean hasStableIds() {
-        return false;
+    static class ViewHolder {
+        ImageView img;
+        TextView  title;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder h;
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.list_row, parent, false);
+            convertView = inflater.inflate(R.layout.list_row, parent, false);
+            h = new ViewHolder();
+            h.img = convertView.findViewById(R.id.list_image);
+            h.title = convertView.findViewById(R.id.title);
+            convertView.setTag(h);
+        } else {
+            h = (ViewHolder) convertView.getTag();
         }
 
-        SubjectData subjectData = arrayList.get(position);
+        SubjectData item = data.get(position);
+        h.title.setText(item.SubjectName);
 
-        TextView title = convertView.findViewById(R.id.title);
-        ImageView img = convertView.findViewById(R.id.list_image);
-
-        title.setText(subjectData.SubjectName);
-        Picasso.get().load(subjectData.Image).into(img);
-
-        // Xử lý click mở link
-        convertView.setOnClickListener(v -> {
-            Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(subjectData.Link));
-            context.startActivity(i);
-        });
+        Picasso.get()
+                .load(item.Image)
+                .placeholder(android.R.drawable.ic_menu_report_image)
+                .error(android.R.drawable.ic_delete)
+                .fit()              // co ảnh theo kích thước view
+                .centerCrop()
+                .into(h.img);
 
         return convertView;
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        return 0; // tất cả item cùng 1 loại
-    }
-
-    @Override
-    public int getViewTypeCount() {
-        return 1;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return arrayList.isEmpty();
     }
 }
