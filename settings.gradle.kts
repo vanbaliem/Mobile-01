@@ -19,5 +19,9 @@ dependencyResolutionManagement {
     }
 }
 
+<<<<<<< HEAD
 rootProject.name = "vanbaliem_2122110304"
+=======
+rootProject.name = "HITCApp"
+>>>>>>> 858203ee319f2506399132f5d3faf548896f9ebc
 include(":app")

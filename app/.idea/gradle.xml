@@ -7,16 +7,6 @@
         <option name="testRunner" value="CHOOSE_PER_TEST" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
-          </set>
-        </option>
-<<<<<<< HEAD
-=======
-        <option name="resolveExternalAnnotations" value="false" />
->>>>>>> 858203ee319f2506399132f5d3faf548896f9ebc
       </GradleProjectSettings>
     </option>
   </component>
