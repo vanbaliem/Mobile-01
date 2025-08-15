@@ -1,4 +1,4 @@
-package com.example.dahonghieu_2122110267;
+package com.example.vanbaliem_2122110304;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +24,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
         Holder(@NonNull View itemView) {
             super(itemView);
             img  = itemView.findViewById(R.id.imgCat);
-            name = itemView.findViewById(R.id.txtCatName);
+
         }
     }
 

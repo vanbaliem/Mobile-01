@@ -37,7 +37,7 @@
 //    }
 //
 //}
-package com.example.dahonghieu_2122110267;
+package com.example.vanbaliem_2122110304;
 
 import static android.content.ContentValues.TAG;
 
@@ -47,7 +47,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,11 +62,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.vanbaliem_2122110304.R;
 
 public class MainActivity extends AppCompatActivity {
     private RequestQueue mRequestQueue;
     private StringRequest mStringRequest;
-    private String url = "https://68931182c49d24bce86949c7.mockapi.io/users";
+    private String url = "https://68940ecabe3700414e11e179.mockapi.io/uses";
 
     @SuppressLint("MissingInflatedId")
     @Override

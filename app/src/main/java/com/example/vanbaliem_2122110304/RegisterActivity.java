@@ -1,4 +1,4 @@
-package com.example.dahonghieu_2122110267;
+package com.example.vanbaliem_2122110304;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,13 +14,14 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.vanbaliem_2122110304.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class  RegisterActivity extends AppCompatActivity {
 
-    private static final String URL = "https://68931182c49d24bce86949c7.mockapi.io/users";
+    private static final String URL = "https://68940ecabe3700414e11e179.mockapi.io/uses";
 
     private EditText txtFullName, txtEmailRegister, txtPasswordRegister, txtConfirmPassword;
     private Button btnRegisterAccount, btnBackToLogin;

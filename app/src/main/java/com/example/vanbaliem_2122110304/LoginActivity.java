@@ -1,4 +1,4 @@
-package com.example.dahonghieu_2122110267;
+package com.example.vanbaliem_2122110304;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                 String txtPass = objPass.getText().toString().trim();
 
                 // Gọi API kiểm tra user
-                String url = "https://68931182c49d24bce86949c7.mockapi.io/users";
+                String url = "https://68940ecabe3700414e11e179.mockapi.io/uses";
                 RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                         new Response.Listener<String>() {

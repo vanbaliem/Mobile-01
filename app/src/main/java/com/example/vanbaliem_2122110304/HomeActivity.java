@@ -1,4 +1,4 @@
-package com.example.dahonghieu_2122110267;
+package com.example.vanbaliem_2122110304;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.vanbaliem_2122110304.R;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,27 +27,11 @@ public class HomeActivity extends AppCompatActivity {
         rvCategory = findViewById(R.id.rvCategory);
         rvProduct  = findViewById(R.id.rvProduct);
 
-        setupCategory();
+
         setupProduct();
     }
 
-    /** Danh mục ngang */
-    private void setupCategory() {
-        rvCategory.setLayoutManager(
-                new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        );
 
-        List<CategoryItem> cats = Arrays.asList(
-                new CategoryItem(R.drawable.cat_coffee,  "Cà phê"),
-                new CategoryItem(R.drawable.cat_tea,     "Trà"),
-                new CategoryItem(R.drawable.cat_frappe,  "Đá xay"),
-                new CategoryItem(R.drawable.cat_cake,    "Bánh ngọt"),
-                new CategoryItem(R.drawable.cat_topping, "Topping"),
-                new CategoryItem(R.drawable.cat_combo,   "Combo")
-        );
-
-        rvCategory.setAdapter(new CategoryAdapter(cats));
-    }
 
     /** Sản phẩm dạng lưới 2 cột */
     private void setupProduct() {
