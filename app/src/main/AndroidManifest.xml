@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.DaHongHieu_2122110267">
+        android:theme="@style/Theme.VanBaLiem_2122110304">
         <activity
             android:name=".HomeActivity"
             android:exported="false" />

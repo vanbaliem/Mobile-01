@@ -1,4 +1,4 @@
-package com.example.dahonghieu_2122110267;
+package com.example.vanbaliem_2122110304;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
-import java.util.function.Consumer;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Holder> {
     public interface OnProductClick { void onOpen(ProductItem item); }

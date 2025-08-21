@@ -1,43 +1,5 @@
-//package com.example.dahonghieu_2122110267;
-//
-//import android.content.Intent;
-//import android.os.Bundle;
-//import android.view.View;
-//import android.widget.Button;
-//
-//import androidx.activity.EdgeToEdge;
-//import androidx.appcompat.app.AppCompatActivity;
-//import androidx.core.graphics.Insets;
-//import androidx.core.view.ViewCompat;
-//import androidx.core.view.WindowInsetsCompat;
-//
-//public class MainActivity extends AppCompatActivity {
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        EdgeToEdge.enable(this);
-//        setContentView(R.layout.activity_main);
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-//            return insets;
-//        });
-//        Button btnBack = findViewById(R.id.btnBack);
-//        btnBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent it = new Intent(getApplicationContext(),LoginActivity.class);
-//                startActivity(it);
-//            }
-//        });
-//        Intent intent = getIntent();
-//        String txtEmail = intent.getStringExtra("email");
-//        String txtPhone = intent.getStringExtra("pass");
-//    }
-//
-//}
-package com.example.dahonghieu_2122110267;
+
+package com.example.vanbaliem_2122110304;
 
 import static android.content.ContentValues.TAG;
 
@@ -47,7 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -67,7 +28,7 @@ import com.android.volley.toolbox.Volley;
 public class MainActivity extends AppCompatActivity {
     private RequestQueue mRequestQueue;
     private StringRequest mStringRequest;
-    private String url = "https://68931182c49d24bce86949c7.mockapi.io/users";
+    private String url = "https://68940ecabe3700414e11e179.mockapi.io/uses";
 
     @SuppressLint("MissingInflatedId")
     @Override

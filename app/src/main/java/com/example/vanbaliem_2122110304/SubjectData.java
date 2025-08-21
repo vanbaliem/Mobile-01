@@ -1,4 +1,4 @@
-package com.example.dahonghieu_2122110267;
+package com.example.vanbaliem_2122110304;
 
 /** Model dùng cho SẢN PHẨM (tên, link chi tiết, ảnh) */
 public class SubjectData {
